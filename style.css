@@ -1,0 +1,248 @@
+/* CSS RESET E VARIÁVEIS DE ALTO CONTRASTE */
+:root {
+    --bg-color: #F4F7F6;
+    --card-bg: #FFFFFF;
+    --text-dark: #111111;
+    --primary-blue: #003366;
+    --primary-hover: #001F3F;
+    --accent-green: #006622;
+    --accent-warning: #990000;
+    --warning-bg: #FFF3CD;
+    --border-color: #222222;
+    --focus-outline: #FF6600;
+    --font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 22px; /* Fonte base ampla */
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding: 20px;
+}
+
+/* Link de atalho para leitores de tela */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background: #000000;
+    color: #FFFFFF;
+    padding: 15px;
+    z-index: 100;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.skip-to-content:focus {
+    top: 10px;
+}
+
+/* ESTRUTURA PRINCIPAL */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 25px;
+    border: 3px solid #000000;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.3rem;
+}
+
+/* MENU DE NAVEGAÇÃO RÁPIDA */
+nav {
+    margin-bottom: 30px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.nav-button {
+    display: block;
+    background-color: #FFFFFF;
+    color: var(--primary-blue);
+    border: 3px solid var(--primary-blue);
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    min-height: 60px; /* Área de toque ampla */
+}
+
+.nav-button:hover, .nav-button:focus {
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    outline: 4px solid var(--focus-outline);
+}
+
+/* BANNER DE ALERTA */
+.alert-box {
+    background-color: var(--warning-bg);
+    border: 4px solid var(--accent-warning);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.alert-box h2 {
+    color: var(--accent-warning);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* CARTÕES DE DICAS */
+.card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    color: var(--primary-blue);
+    font-size: 1.6rem;
+    border-bottom: 3px solid var(--primary-blue);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.tip-list {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+.tip-list li {
+    margin-bottom: 15px;
+}
+
+.highlight {
+    font-weight: bold;
+    background-color: #FFE600;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* SEÇÃO INTERATIVA (DETALHES / EXPANSÍVEL) */
+details {
+    border: 3px solid var(--primary-blue);
+    border-radius: 10px;
+    background-color: #EBF3FA;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    cursor: pointer;
+    padding: 10px;
+}
+
+summary:focus {
+    outline: 4px solid var(--focus-outline);
+}
+
+details p {
+    padding: 15px 10px 5px 10px;
+    border-top: 2px solid var(--primary-blue);
+    margin-top: 10px;
+}
+
+/* SEÇÃO DE AJUDA / EMERGÊNCIA */
+.emergency-box {
+    background-color: #E8F5E9;
+    border: 4px solid var(--accent-green);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.emergency-box h2 {
+    color: var(--accent-green);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.btn-call {
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 18px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 2px solid #000000;
+}
+
+.btn-call:hover, .btn-call:focus {
+    background-color: #004D1A;
+    outline: 4px solid var(--focus-outline);
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid var(--border-color);
+    margin-top: 40px;
+    font-size: 1rem;
+}
+
+/* FOCO VISÍVEL PARA NAVEGAÇÃO POR TECLADO */
+*:focus-visible {
+    outline: 4px solid var(--focus-outline) !important;
+    outline-offset: 2px;
+}
+
+/* RESPONSIVIDADE PARA CELULARES */
+@media (max-width: 600px) {
+    body {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+    }
+}
