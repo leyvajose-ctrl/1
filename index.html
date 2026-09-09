@@ -4,117 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia de Segurança Digital - Terceira Idade</title>
-    <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Link para pular direto ao conteúdo (para quem usa leitor de tela ou teclado) -->
-    <a href="#conteudo-principal" class="skip-to-content">Pular para o conteúdo principal</a>
+    <!-- 1. ELEMENTO QUE ENVOLVE TODO O CONTEÚDO DA PÁGINA -->
+    <div class="page-wrapper">
 
-    <div class="container">
+        <!-- Link para leitores de tela -->
+        <a href="#conteudo-principal" class="skip-to-content">Pular para o conteúdo principal</a>
 
-        <!-- CABEÇALHO -->
-        <header role="banner">
-            <h1>🛡️ Segurança na Internet</h1>
-            <p>Dicas simples e seguras para o seu dia a dia digital</p>
-        </header>
+        <div class="container">
 
-        <!-- NAVEGAÇÃO -->
-        <nav aria-label="Navegação do aplicativo">
-            <ul class="nav-list">
-                <li><a href="#whatsapp" class="nav-button">📲 WhatsApp</a></li>
-                <li><a href="#bancos" class="nav-button">🏦 Bancos e PIX</a></li>
-                <li><a href="#senhas" class="nav-button">🔑 Senhas</a></li>
-                <li><a href="#ajuda" class="nav-button">📞 Pedir Ajuda</a></li>
-            </ul>
-        </nav>
+            <!-- CABEÇALHO -->
+            <header role="banner">
+                <h1>🛡️ Segurança na Internet</h1>
+                <p>Dicas simples e seguras para o seu dia a dia digital</p>
+            </header>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main id="conteudo-principal">
-
-            <!-- REGRA DE OURO / ALERTA -->
-            <section class="alert-box" aria-live="polite">
-                <h2>⚠️ A Regra de Ouro</h2>
-                <p><strong>NUNCA</strong> passe senhas ou códigos recebidos no seu celular para ninguém, nem mesmo para parentes ou funcionários do banco.</p>
-            </section>
-
-            <!-- DICA 1: WHATSAPP -->
-            <article id="whatsapp" class="card">
-                <h2>📲 Cuidados no WhatsApp</h2>
-                <ul class="tip-list">
-                    <li>
-                        <strong>Mensagem de parente pedindo dinheiro:</strong> Se um filho ou neto mandar mensagem dizendo que mudou de número e precisa de dinheiro urgente, <span class="highlight">não faça o PIX!</span> Ligue para o número antigo dele antes de qualquer coisa.
-                    </li>
-                    <li>
-                        <strong>Código de 6 dígitos:</strong> Se chegar uma mensagem com números e alguém pedir esse código, não envie. É um golpe para roubar sua conta.
-                    </li>
-                    <li>
-                        <strong>Links suspeitos:</strong> Não clique em links que prometem prêmios, cestas básicas ou presentes grátis.
-                    </li>
+            <!-- NAVEGAÇÃO -->
+            <nav aria-label="Navegação do aplicativo">
+                <ul class="nav-list">
+                    <li><a href="#whatsapp" class="nav-button">📲 WhatsApp</a></li>
+                    <li><a href="#bancos" class="nav-button">🏦 Bancos e PIX</a></li>
+                    <li><a href="#senhas" class="nav-button">🔑 Senhas</a></li>
+                    <li><a href="#modal-alerta" class="nav-button btn-alerta-destaque">🚨 Testar Alerta Modal</a></li>
                 </ul>
+            </nav>
 
-                <details>
-                    <summary>👉 Clique aqui para ler um exemplo de golpe do WhatsApp</summary>
-                    <p>O golpista usa a foto do seu parente e diz: <em>"Oi mãe, troquei de número. O meu aplicativo do banco está bloqueado, você pode pagar essa conta para mim?"</em>. <br><br><strong>O que fazer:</strong> Desconfie sempre e ligue para a pessoa!</p>
-                </details>
-            </article>
+            <!-- CONTEÚDO PRINCIPAL -->
+            <main id="conteudo-principal">
+<!-- CARTÃO: LINKS SUSPEITOS E COMO EVITAR -->
+<article id="links-suspeitos" class="card">
+    <h2>🔗 Exemplo de Link Falso e Como Evitá-lo</h2>
+    
+    <p>Golpistas costumam disfarçar o texto do link para parecer confiável, mas o destino real é um site malicioso.</p>
 
-            <!-- DICA 2: BANCOS E PIX -->
-            <article id="bancos" class="card">
-                <h2>🏦 Cuidados com Banco e PIX</h2>
-                <ul class="tip-list">
-                    <li>
-                        <strong>O banco NUNCA liga pedindo senha:</strong> Se alguém ligar dizendo ser do seu banco e pedir senha ou para fazer uma "transferência de teste", desligue na hora.
-                    </li>
-                    <li>
-                        <strong>Motoboy do banco não existe:</strong> O banco nunca vai mandar uma pessoa na sua casa para buscar seu cartão bancário.
-                    </li>
-                    <li>
-                        <strong>Cuidado na maquininha de cartão:</strong> Ao pagar na rua, sempre confira o valor no visor antes de digitar a sua senha.
-                    </li>
-                </ul>
+    <!-- EXEMPLO VISUAL DE ALERTA -->
+    <div class="exemplo-perigo">
+        <p><strong>❌ Exemplo de Armadilha:</strong></p>
+        <p>O texto exibido parece seguro: <span class="link-simulado">www.meubanco.com.br</span></p>
+        <p>Mas o endereço verdadeiro é: <code>http://www.site-golpista.com/roubo</code></p>
+    </div>
 
-                <details>
-                    <summary>👉 O que fazer se ligarem dizendo que sua conta foi invadida?</summary>
-                    <p>Desligue o telefone. Espere 5 minutos (ou use outro telefone) e ligue diretamente para o número que está atrás do seu cartão bancário.</p>
-                </details>
-            </article>
+    <h3 style="margin-top: 20px; color: var(--primary-blue);">🛡️ Como evitar cair nessa armadilha:</h3>
+    <ul class="tip-list" style="margin-top: 10px;">
+        <li>
+            <strong>Passe o mouse sem clicar:</strong> No computador, coloque a seta em cima do link sem apertar nada. O endereço verdadeiro vai aparecer no canto inferior da tela.
+        </li>
+        <li>
+            <strong>Digite o site você mesmo:</strong> Nunca entre na sua conta bancária clicando em links de mensagens. Abra o aplicativo do banco ou digite o endereço oficial na barra do navegador.
+        </li>
+        <li>
+            <strong>Procure pelo Cadeado:</strong> Verifique se o endereço do site começa com <strong>https://</strong> e possui um ícone de cadeado fechado ao lado do nome do site.
+        </li>
+    </ul>
+</article>
+                <!-- REGRA DE OURO / ALERTA -->
+                <section class="alert-box" aria-live="polite">
+                    <h2>⚠️ A Regra de Ouro</h2>
+                    <p><strong>NUNCA</strong> passe senhas ou códigos recebidos no seu celular para ninguém, nem mesmo para parentes ou funcionários do banco.</p>
+                </section>
 
-            <!-- DICA 3: SENHAS -->
-            <article id="senhas" class="card">
-                <h2>🔑 Como Criar e Guardar Senhas</h2>
-                <ul class="tip-list">
-                    <li>
-                        <strong>Evite senhas fáceis:</strong> Não use sua data de nascimento, nome de netos ou sequências como "123456".
-                    </li>
-                    <li>
-                        <strong>Anote em um caderno seguro:</strong> É mais seguro anotar suas senhas em um caderno guardado em uma gaveta na sua casa do que salvá-las no celular.
-                    </li>
-                </ul>
-            </article>
+                <!-- DICA 1: WHATSAPP -->
+                <article id="whatsapp" class="card">
+                    <h2>📲 Cuidados no WhatsApp</h2>
+                    <ul class="tip-list">
+                        <li>
+                            <strong>Mensagem de parente pedindo dinheiro:</strong> Se um filho ou neto mandar mensagem dizendo que mudou de número e precisa de dinheiro urgente, <span class="highlight">não faça o PIX!</span> Ligue para o número antigo dele antes de qualquer coisa.
+                        </li>
+                        <li>
+                            <strong>Código de 6 dígitos:</strong> Se chegar uma mensagem com números e alguém pedir esse código, não envie. É um golpe para roubar sua conta.
+                        </li>
+                        <li>
+                            <strong>Links suspeitos:</strong> Não clique em links que prometem prêmios, cestas básicas ou presentes grátis.
+                        </li>
+                    </ul>
 
-            <!-- SEÇÃO DE EMERGÊNCIA / CONTATO -->
-            <section id="ajuda" class="emergency-box">
-                <h2>🆘 Caiu em um golpe ou está em dúvida?</h2>
-                <p>Não tenha vergonha! Qualquer pessoa pode ser vítima. O mais importante é agir rápido.</p>
-                
-                <p style="margin-top: 15px;"><strong>Passo a passo rápido:</strong></p>
-                <p>1. Avise um familiar de sua confiança.</p>
-                <p>2. Ligue para o seu banco para bloquear a conta.</p>
-                <p>3. Faça um Boletim de Ocorrência na polícia.</p>
+                    <details>
+                        <summary>👉 Clique aqui para ler um exemplo de golpe do WhatsApp</summary>
+                        <p>O golpista usa a foto do seu parente e diz: <em>"Oi mãe, troquei de número. O meu aplicativo do banco está bloqueado, você pode pagar essa conta para mim?"</em>. <br><br><strong>O que fazer:</strong> Desconfie sempre e ligue para a pessoa!</p>
+                    </details>
+                </article>
 
-                <a href="tel:190" class="btn-call" aria-label="Ligar para a Polícia no número 190">LIGAR PARA A POLÍCIA (190)</a>
-            </section>
+                <!-- DICA 2: BANCOS E PIX -->
+                <article id="bancos" class="card">
+                    <h2>🏦 Cuidados com Banco e PIX</h2>
+                    <ul class="tip-list">
+                        <li>
+                            <strong>O banco NUNCA liga pedindo senha:</strong> Se alguém ligar dizendo ser do seu banco e pedir senha ou para fazer uma "transferência de teste", desligue na hora.
+                        </li>
+                        <li>
+                            <strong>Motoboy do banco não existe:</strong> O banco nunca vai mandar uma pessoa na sua casa para buscar seu cartão bancário.
+                        </li>
+                        <li>
+                            <strong>Cuidado na maquininha de cartão:</strong> Ao pagar na rua, sempre confira o valor no visor antes de digitar a sua senha.
+                        </li>
+                    </ul>
+                </article>
 
-        </main>
+                <!-- DICA 3: SENHAS -->
+                <article id="senhas" class="card">
+                    <h2>🔑 Como Criar e Guardar Senhas</h2>
+                    <ul class="tip-list">
+                        <li>
+                            <strong>Evite senhas fáceis:</strong> Não use sua data de nascimento, nome de netos ou sequências como "123456".
+                        </li>
+                        <li>
+                            <strong>Anote em um caderno seguro:</strong> É mais seguro anotar suas senhas em um caderno guardado em uma gaveta na sua casa do que salvá-las no celular.
+                        </li>
+                    </ul>
+                </article>
 
-        <!-- RODAPÉ -->
-        <footer>
-            <p>Guia de Acessibilidade Digital para a Terceira Idade.</p>
-            <p>Desenvolvido para incentivar a navegação segura de todos os idosos.</p>
-        </footer>
+                <!-- SEÇÃO DE EMERGÊNCIA / CONTATO -->
+                <section id="ajuda" class="emergency-box">
+                    <h2>🆘 Caiu em um golpe ou está em dúvida?</h2>
+                    <p>Não tenha vergonha! Qualquer pessoa pode ser vítima. O mais importante é agir rápido.</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Passo a passo rápido:</strong></p>
+                    <p>1. Avise um familiar de sua confiança.</p>
+                    <p>2. Ligue para o seu banco para bloquear a conta.</p>
+                    <p>3. Faça um Boletim de Ocorrência na polícia.</p>
 
+                    <a href="tel:190" class="btn-call" aria-label="Ligar para a Polícia no número 190">LIGAR PARA A POLÍCIA (190)</a>
+                </section>
+
+            </main>
+
+            <!-- RODAPÉ -->
+            <footer>
+                <p>Guia de Acessibilidade Digital para a Terceira Idade.</p>
+                <p>Desenvolvido para incentivar a navegação segura de todos os idosos.</p>
+            </footer>
+
+        </div>
+
+    </div> <!-- FIM DO PAGE-WRAPPER -->
+
+    <!-- ========================================================== -->
+    <!-- JANELA MODAL COM FUNDO ESCURECIDO (OVERLAY)                -->
+    <!-- ========================================================== -->
+    <div id="modal-alerta" class="modal-overlay" role="dialog" aria-labelledby="modal-titulo" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-titulo">⚠️ Alerta de Segurança</h2>
+                <a href="#" class="modal-close" aria-label="Fechar janela de alerta">&times; Fechar</a>
+            </div>
+            <div class="modal-body">
+                <p><strong>Atenção! Nunca compartilhe códigos do seu celular.</strong></p>
+                <p>Se receber uma ligação solicitando confirmação de dados ou transferência via PIX, desligue imediatamente.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-modal-ok">Entendi e Quero Fechar</a>
+            </div>
+        </div>
     </div>
 
 </body>

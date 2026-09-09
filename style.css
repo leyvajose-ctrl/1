@@ -19,11 +19,17 @@
     padding: 0;
 }
 
+/* 1. ELEMENTO QUE ENVOLVE TODO O CONTEÚDO DA PÁGINA */
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
 body {
     font-family: var(--font-family);
     font-size: 22px; /* Fonte base ampla */
     line-height: 1.6;
-    background-color: var(--bg-color);
     color: var(--text-dark);
     padding: 20px;
 }
@@ -70,7 +76,7 @@ header p {
     font-size: 1.3rem;
 }
 
-/* MENU DE NAVEGAÇÃO RÁPIDA */
+/* MENU DE NAVEGAÇÃO */
 nav {
     margin-bottom: 30px;
 }
@@ -94,7 +100,13 @@ nav {
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
-    min-height: 60px; /* Área de toque ampla */
+    min-height: 60px;
+}
+
+.btn-alerta-destaque {
+    background-color: #FFF3CD;
+    color: var(--accent-warning);
+    border-color: var(--accent-warning);
 }
 
 .nav-button:hover, .nav-button:focus {
@@ -116,9 +128,6 @@ nav {
     color: var(--accent-warning);
     font-size: 1.6rem;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 /* CARTÕES DE DICAS */
@@ -155,7 +164,7 @@ nav {
     border-radius: 4px;
 }
 
-/* SEÇÃO INTERATIVA (DETALHES / EXPANSÍVEL) */
+/* DETALHES EXPANSÍVEIS */
 details {
     border: 3px solid var(--primary-blue);
     border-radius: 10px;
@@ -172,17 +181,13 @@ summary {
     padding: 10px;
 }
 
-summary:focus {
-    outline: 4px solid var(--focus-outline);
-}
-
 details p {
     padding: 15px 10px 5px 10px;
     border-top: 2px solid var(--primary-blue);
     margin-top: 10px;
 }
 
-/* SEÇÃO DE AJUDA / EMERGÊNCIA */
+/* SEÇÃO DE EMERGÊNCIA */
 .emergency-box {
     background-color: #E8F5E9;
     border: 4px solid var(--accent-green);
@@ -211,9 +216,143 @@ details p {
     border: 2px solid #000000;
 }
 
-.btn-call:hover, .btn-call:focus {
-    background-color: #004D1A;
-    outline: 4px solid var(--focus-outline);
+/* ==========================================================
+   2. ESTILO DO OVERLAY (FUNDO ESCURECIDO) E MODAL
+   ========================================================== */
+/* ==========================================================
+   ALTERAÇÃO DO BOTÃO QUANDO O MODAL ESTÁ ABERTO
+   ========================================================== */
+
+/* Quando o elemento #modal-alerta estiver ativo (:target), 
+   alteramos a aparência do botão correspondente na página */
+body:has(#modal-alerta:target) .btn-alerta-destaque {
+    background-color: var(--accent-green);
+    color: #FFFFFF;
+    border-color: #000000;
+    font-size: 0; /* Esconde o texto original temporariamente */
+    box-shadow: 0 0 0 4px var(--accent-green);
+}
+
+/* Insere o novo texto visualmente para indicar que o modal está aberto */
+body:has(#modal-alerta:target) .btn-alerta-destaque::after {
+    content: "✅ Modal em Exibição";
+    font-size: 1.1rem; /* Restaura o tamanho do texto acessível */
+    font-weight: bold;
+}
+
+/* Fundo escuro (Overlay) que cobre toda a tela */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /* Escurece o fundo com 75% de opacidade e aplica um desfoque suave */
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+
+    /* Garante que o fundo escuro fique ACIMA de todo o conteúdo */
+    z-index: 1000;
+
+    /* Centraliza o modal na tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    /* Estado Oculto (Padrão) */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Ativa o modal e escurece o fundo quando o link é clicado (:target) */
+.modal-overlay:target {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* 3. CAIXA DO MODAL - FICAR ACIMA DO FUNDO ESCURECIDO */
+.modal-content {
+    /* Fundo 100% sólido (#FFFFFF) garante legibilidade total sem transparência no texto */
+    background-color: #FFFFFF;
+    color: #111111;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 650px;
+    width: 100%;
+    border: 5px solid var(--accent-warning);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+    /* Z-Index superior ao overlay para garantir que fique acima */
+    position: relative;
+    z-index: 1001;
+
+    /* Transição de entrada */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay:target .modal-content {
+    transform: scale(1);
+}
+
+/* ELEMENTOS INTERNOS DO MODAL */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    color: var(--accent-warning);
+    font-size: 1.8rem;
+}
+
+.modal-close {
+    background-color: #111111;
+    color: #FFFFFF;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.modal-close:hover, .modal-close:focus {
+    background-color: var(--accent-warning);
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-modal-ok {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px solid #000000;
+}
+
+.btn-modal-ok:hover, .btn-modal-ok:focus {
+    background-color: var(--primary-hover);
 }
 
 /* RODAPÉ */
@@ -245,4 +384,44 @@ footer {
     .nav-button {
         width: 100%;
     }
+
+    .modal-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    /* ==========================================================
+   ESTILOS PARA O EXEMPLO DE LINK SUSPEITO
+   ========================================================== */
+
+.exemplo-perigo {
+    background-color: #FFEBEE;
+    border-left: 8px solid var(--accent-warning);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 2px solid var(--accent-warning);
 }
+
+.exemplo-perigo p {
+    margin-bottom: 8px;
+}
+
+.link-simulado {
+    color: #0000EE;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.exemplo-perigo code {
+    background-color: #FFFFFF;
+    color: var(--accent-warning);
+    padding: 3px 8px;
+    border: 1px solid var(--accent-warning);
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-block;
+}
+}   
